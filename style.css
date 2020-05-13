@@ -1,0 +1,40 @@
+.jumbotron-fluid {
+ background-color: #588da8;
+}  
+
+.city-data {
+    width: 58rem;
+    margin-left: 32px;
+}
+
+.card {
+    float: left;
+}
+
+.forecast {
+    background-color: #d8345f;
+    float:left;
+    margin-left: 10px;
+}
+
+.forecast-cont{
+    margin:20px 0 20px 40px;
+
+}
+
+h3 {
+    margin-left: 49px;
+}
+
+#icon {
+    margin-left: 10px;
+    width: 40px;
+}
+
+.cityName {
+    margin-left:16px;
+}
+
+#uvIndex {
+    background-color: crimson;
+}

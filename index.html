@@ -4,46 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Weather Dashboard</h1>
-          <p class="lead">Enter the City which weather you'd like to know</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Search for a City</h5>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">@</span>
+    <div class="container-fluid"> <!--Wrapper -->
+        <div class="jumbotron jumbotron-fluid"> <!--Jumbotron with page info -->
+            <div class="container">
+              <h1 class="display-4">Weather Dashboard</h1>
+              <p class="lead">Enter the City which weather you'd like to know</p>
             </div>
-          </div>
-          <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-          </ul>
         </div>
-        
-      </div>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">City</h5>
-          <h4 class="card-subtitle mb-2 text-muted">Date</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Temperature:</h6>
-          <h6 class="card-subtitle mb-2 text-muted">Humidity:</h6>
-          <h6 class="card-subtitle mb-2 text-muted">Wind Speed:</h6>
-          <h6 class="card-subtitle mb-2 text-muted">UV Index</h6>
-        </div>
-      </div>
+        <div class="row"> <!--Row containing the 3 sections-->
+            <div class="col-sm-3"> <!--Column containg the searching info-->
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                <div class="card" style="width: 18rem;">
+
+                    <div class="card-body">
+                      <h5 class="card-title">Search for a City</h5>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control cityInput" placeholder="City" aria-label="Username" aria-describedby="basic-addon1">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-dark citySearch"><i class="fas fa-search-location"></i></button>
+                        </div>
+                      </div>
+                      <ul class="list-group">
+                        <li class="list-group-item"></li>
+                        <li class="list-group-item"></li>
+                        <li class="list-group-item"></li>
+                        <li class="list-group-item"></li>
+                        <li class="list-group-item"></li>
+                      </ul>
+                    </div> 
+
+                </div>
+            </div>
+            <div class="col-sm-8"> <!--Column containing the city info and the 5 day forecast-->
+
+                <div class="card">
+                    <div class="card-body city-data">
+                      <div class="row">
+                          <h5 class="card-title cityName">City: </h5>
+                          <img id="icon"></img>
+                      </div>
+                      <h4 class="card-subtitle mb-2 text-muted current-date"></h4>
+                      <h6 class="card-subtitle mb-2 text-muted cityTemp">Temperature: </h6>
+                      <h6 class="card-subtitle mb-2 text-muted cityHum">Humidity: </h6>
+                      <h6 class="card-subtitle mb-2 text-muted cityWind">Wind Speed: </h6>
+                      <div class="uvIndex"><h6 class="card-subtitle mb-2 text-muted">UV Index: </h6><button type="button" class="btn btn-danger">Danger</button></div>
+                    </div>
+                    <h3>5-Day Forecast</h3>
+                    <div class="row">
+                        <div class="col-sm-12 forecast-cont">
+                            <div class="col-sm-2 forecast">
+                                <p>Date<p>
+                                <p>Temp:</p>
+                                <p>Humidity</p>
+                            </div>
+                            <div class="col-sm-2 forecast">
+                                <p>Date<p>
+                                <p>Temp:</p>
+                                <p>Humidity</p>
+                            </div>
+                            <div class="col-sm-2 forecast">
+                                <p>Date<p>
+                                <p>Temp:</p>
+                                <p>Humidity</p>
+                            </div>
+                            <div class="col-sm-2 forecast">
+                                <p>Date<p>
+                                <p>Temp:</p>
+                                <p>Humidity</p>
+                            </div>
+                            <div class="col-sm-2 forecast">
+                                <p>Date<p>
+                                <p>Temp:</p>
+                                <p>Humidity</p>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>    
+     </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="script.js"></script>
+<script src="https://kit.fontawesome.com/29dcdf32e6.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
 </body>
