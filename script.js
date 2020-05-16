@@ -71,8 +71,8 @@ $(document).ready(function(){
             
             $(".cityName").text("City: " + cityName);
             $(".cityTemp").text("Temp: " + cityTemp + "°F");
-            $(".cityHum").text("Humidity: " + cityHum);
-            $(".cityWind").text("City Wind: " + cityWind);
+            $(".cityHum").text("Humidity: " + cityHum + "%");
+            $(".cityWind").text("City Wind: " + cityWind + " km/h");
             $("#icon").attr("src", tempIcon);
            console.log(tempIcon);
 
@@ -105,11 +105,11 @@ $(document).ready(function(){
             var day4Temp = response.list[3].main.temp;
             var day5Temp = response.list[4].main.temp;
 
-            $(".temp1").text(day1Temp);
-            $(".temp2").text(day2Temp);
-            $(".temp3").text(day3Temp);
-            $(".temp4").text(day4Temp);
-            $(".temp5").text(day5Temp);
+            $(".temp1").text("Temp: " + day1Temp + "°F");
+            $(".temp2").text("Temp: " + day2Temp + "°F");
+            $(".temp3").text("Temp: " + day3Temp + "°F");
+            $(".temp4").text("Temp: " + day4Temp + "°F");
+            $(".temp5").text("Temp: " + day5Temp + "°F");
             //Forecast Humidity//
 
             var day1Hum = response.list[0].main.humidity;
@@ -118,11 +118,11 @@ $(document).ready(function(){
             var day4Hum = response.list[3].main.humidity;
             var day5Hum = response.list[4].main.humidity;
 
-            $(".hum1").text(day1Hum);
-            $(".hum2").text(day2Hum);
-            $(".hum3").text(day3Hum);
-            $(".hum4").text(day4Hum);
-            $(".hum5").text(day5Hum);
+            $(".hum1").text("Humidity: " + day1Hum + "%");
+            $(".hum2").text("Humidity: " + day2Hum + "%");
+            $(".hum3").text("Humidity: " + day3Hum + "%");
+            $(".hum4").text("Humidity: " + day4Hum + "%");
+            $(".hum5").text("Humidity: " + day5Hum + "%");
         
             //Forecast Icon//
             var icon1 = response.list[0].weather[0].icon;
@@ -139,8 +139,6 @@ $(document).ready(function(){
 
             var icon5 = response.list[4].weather[0].icon;
             var tempIcon5 = "http://openweathermap.org/img/w/" + icon5 + ".png";
-
-            
 
             $("#icon1").attr("src", tempIcon1);
             $("#icon2").attr("src", tempIcon2);

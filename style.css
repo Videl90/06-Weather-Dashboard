@@ -1,10 +1,14 @@
+
 .jumbotron-fluid {
  background-color: #588da8;
+ color: #ffffff;
+ font-family: 'Jost', sans-serif;
 }  
 
 .city-data {
     width: 58rem;
     margin-left: 32px;
+    font-family: 'Jost', sans-serif;
 }
 
 .card {
@@ -13,8 +17,11 @@
 
 .forecast {
     background-color: #d8345f;
+    color: white;
     float:left;
     margin-left: 10px;
+    padding-top: 10px;
+    font-family: 'Jost', sans-serif;
 }
 
 .forecast-cont{
@@ -24,11 +31,15 @@
 
 h3 {
     margin-left: 49px;
+    font-family: 'Jost', sans-serif;
+    font-weight: bold;
+    color: #383838;
 }
+
 
 #icon {
     margin-left: 10px;
-    width: 40px;
+    width: 4%;
 }
 
 .cityName {
