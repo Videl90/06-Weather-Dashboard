@@ -46,6 +46,39 @@ h3 {
     margin-left:16px;
 }
 
-#uvIndex {
-    background-color: crimson;
+.uvIndexYell {
+    background-color: #f4d167;
+    width: 100px;
+    height:30px;
+    border: none;
+    color: #383838; 
+}
+
+.uvIndexOr {
+    background-color: #ff8340;
+    width: 100px;
+    height:30px;
+    border: none;
+    color: #ffffff; 
+}
+
+.uvIndexRed {
+    background-color: #f32b2b;
+    width: 100px;
+    height:30px;
+    border: none;
+    color: #ffffff; 
+}
+
+.uvIndexMag {
+    background-color: #860088;
+    width: 100px;
+    height:30px;
+    border: none;
+    color: #ffffff;
+}
+
+li {
+    list-style: none;
+    margin-left: 15px;
 }

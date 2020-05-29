@@ -22,29 +22,24 @@ $(document).ready(function(){
             $(".day5").html(moment().add(5, "days").format('MMMM Do YYYY'));
         } setInterval(nextDays, 1000);
 
-
+    
+    var allCities = [];
+    var cityIndex = localStorage.length;
 
     //CLICK EVENT TO DISPLAY ALL DATA//
 
     $("button").on("click", function(event){
         event.preventDefault();
         var cities =$(".cityInput").val();
-        var eachCity = [];
-
-        //LOCAL STORAGE//
+        allCities.push(cities);
+        localStorage.setItem(cityIndex, cities);
+        console.log(cities);
+        var cityText = $("<li>").html(cities);
+        $(".list-group").append(cityText);
         
-            eachCity = JSON.parse(localStorage.getItem("eachCity"));
-            console.log(eachCity);
-            eachCity.push(cities);
-            localStorage.setItem("eachCity", JSON.stringify(eachCity));
-            console.log(localStorage);
-        
-        
-
 
         //CURRENT WEATHER INFO API//
         var weatherApi = "http://api.openweathermap.org/data/2.5/weather?q=" + cities + "&appid=0d545759c04215d46c0fe7079cd3df21";
-        console.log(cities);
         console.log(weatherApi);
 
         $(".list-group-item").text(cities); //Appends the cities into the buttons//
@@ -63,6 +58,7 @@ $(document).ready(function(){
             var cityName = response.name;
             var tempIcon = response.weather.icon;
             var cityTemp = response.main.temp;
+            console.log(cityTemp);
             var cityHum = response.main.humidity;
             var cityWind = response.wind.speed;
             var icon = response.weather[0].icon;
@@ -72,25 +68,65 @@ $(document).ready(function(){
             $(".cityName").text("City: " + cityName);
             $(".cityTemp").text("Temp: " + cityTemp + "°F");
             $(".cityHum").text("Humidity: " + cityHum + "%");
-            $(".cityWind").text("City Wind: " + cityWind + " km/h");
+            $(".cityWind").text("Wind Speed: " + cityWind + " km/h");
             $("#icon").attr("src", tempIcon);
            console.log(tempIcon);
 
+           //UVINDEX//
+
+           var queryUrl ="http://api.openweathermap.org/data/2.5/weather?q=" + cities + "&appid=0d545759c04215d46c0fe7079cd3df21";
+            console.log(cities, queryUrl);
+        
+            $.ajax({
+                    url: queryUrl,
+                    method: "GET"
+                })
+                //FUNCTION TO GET THE CURRENT WEATHER DATA//
+                .then(function(response){
+                    var lon = response.coord.lon;
+                    var lat = response.coord.lat;
+                    console.log(lat, lon);
+        
+                    var uvInUrl = "http://api.openweathermap.org/data/2.5/uvi?" + "appid=0d545759c04215d46c0fe7079cd3df21&lat=" + lat + "&lon=" + lon;
+                    console.log(uvInUrl);
+                   
+        
+                    $.ajax({
+                    url:uvInUrl,
+                    method: "GET"
+                    }).then(function(getUvIndex){
+                    var uvIndex = getUvIndex.value;
+                    $("#uvIndex").text(uvIndex);
+                    console.log(uvIndex);
+                    
+                    $("#uvIndex").removeClass();
+
+                    if (uvIndex >= 3 && uvIndex <= 5){
+                        $("#uvIndex").addClass("uvIndexYell");
+                    } else if (uvIndex >= 5 && uvIndex <= 7){
+                        $("#uvIndex").addClass("uvIndexOr");
+                    } else if (uvIndex >= 7 && uvIndex <= 10){
+                        $("#uvIndex").addClass("uvIndexRed");
+                    } else if (uvIndex >= 10){
+                        $("#uvIndex").addClass("uvIndexMag");
+                    }
+                    });
+                });
+
        })//CLOSES THE CURRENT WEATHER DATA RESPONSE FUNCTION//
 
-     
-       renderFiveForecast(cities);
+       renderFiveForecast();
        
     });//CLOSES THE ON CLICK EVENT//
-
+    
     //FUNCTION TO DISPLAY 5 DAY FORECAST//
-    function renderFiveForecast(response) {
+    function renderFiveForecast() {
         var cities =$(".cityInput").val();
         var foreCast = "https://api.openweathermap.org/data/2.5/forecast?q=" + cities + "&appid=0d545759c04215d46c0fe7079cd3df21" + "&units=imperial";  
         console.log(foreCast);
         
         //AJAX CALL TO HAVE THE 5 DAY FORECAST DATA//
-        $.ajax({
+        $.ajax({ 
             url: foreCast,
             method: "GET",
            
@@ -146,7 +182,7 @@ $(document).ready(function(){
             $("#icon4").attr("src", tempIcon4);
             $("#icon5").attr("src", tempIcon5);
 
-        //DISPLAYS THE ICON//
+        /*DISPLAYS THE ICON//
             var tempIconDaily = []
             for (var i = 0; i < 5; i++){
                 var icon1 = response.daily[i].weather[i].icon;
@@ -156,31 +192,14 @@ $(document).ready(function(){
                 
                 console.log(icon1)
                 $("#icon1").attr("src", tempIcon1);
-            }
+            }*/
     
     
         })
 
        }//CLOSES THE 5 DAY FORECAST DISPLAY FUNCTION//
     
-       function renderUvIndex(cities) {
-        var uviApi = "https://api.openweathermap.org/data/2.5/uvi?" + cities + "appid=0d545759c04215d46c0fe7079cd3df21" + "&lat=" + lat + "&lon=" + lon;  
-        console.log(uviApi);
-        var lat = response.lat;
-            var lon = response.lon;
-            console.log(lat, lon);
-        
-        $.ajax({
-            url: uviApi,
-            method: "GET"
-        })
-        .then(function(response){
-            console.log(response)
-            var currentUV = reponse.current.uvi;
-            console.log(currentUV);
-        })
-            
-       }
+    
 });//Closes Ready Function
 
 
@@ -206,15 +225,11 @@ $(document).ready(function(){
             
             for (var i = 0; i < cityLength; i++){
                 var cityTaken = citiesLocalStorage[i];
-
                 $(".list-group-item").append(cities + cityTaken);
             }
         }
         renderCities();
         renderFiveForecast();     
-
     };
 })
-
-
 }*/
