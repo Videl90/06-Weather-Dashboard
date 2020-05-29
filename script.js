@@ -39,7 +39,7 @@ $(document).ready(function(){
         
 
         //CURRENT WEATHER INFO API//
-        var weatherApi = "http://api.openweathermap.org/data/2.5/weather?q=" + cities + "&appid=0d545759c04215d46c0fe7079cd3df21";
+        var weatherApi = "https://api.openweathermap.org/data/2.5/weather?q=" + cities + "&appid=0d545759c04215d46c0fe7079cd3df21";
         console.log(weatherApi);
 
         $(".list-group-item").text(cities); //Appends the cities into the buttons//
@@ -62,7 +62,7 @@ $(document).ready(function(){
             var cityHum = response.main.humidity;
             var cityWind = response.wind.speed;
             var icon = response.weather[0].icon;
-            var tempIcon = "http://openweathermap.org/img/w/" + icon + ".png";
+            var tempIcon = "https://openweathermap.org/img/w/" + icon + ".png";
 
             
             $(".cityName").text("City: " + cityName);
@@ -74,7 +74,7 @@ $(document).ready(function(){
 
            //UVINDEX//
 
-           var queryUrl ="http://api.openweathermap.org/data/2.5/weather?q=" + cities + "&appid=0d545759c04215d46c0fe7079cd3df21";
+           var queryUrl ="https://api.openweathermap.org/data/2.5/weather?q=" + cities + "&appid=0d545759c04215d46c0fe7079cd3df21";
             console.log(cities, queryUrl);
         
             $.ajax({
@@ -87,7 +87,7 @@ $(document).ready(function(){
                     var lat = response.coord.lat;
                     console.log(lat, lon);
         
-                    var uvInUrl = "http://api.openweathermap.org/data/2.5/uvi?" + "appid=0d545759c04215d46c0fe7079cd3df21&lat=" + lat + "&lon=" + lon;
+                    var uvInUrl = "https://api.openweathermap.org/data/2.5/uvi?" + "appid=0d545759c04215d46c0fe7079cd3df21&lat=" + lat + "&lon=" + lon;
                     console.log(uvInUrl);
                    
         
